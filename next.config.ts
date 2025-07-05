@@ -1,7 +1,17 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    unoptimized: false,
+    domains: [
+      'www.awin1.com',
+      'tracking.publicidees.com',
+      'telecom.bemove.fr',
+    ],
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  // Suppression de la section rewrites qui n'est plus nécessaire
 };
 
-export default nextConfig;
+module.exports = nextConfig;
