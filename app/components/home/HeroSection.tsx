@@ -3,9 +3,16 @@
 import React from 'react';
 import Link from 'next/link';
 import { Smartphone, Wifi, TrendingDown, Shield, Star, ArrowRight } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+
+interface Stat {
+  icon: LucideIcon;
+  number: string;
+  label: string;
+}
 
 export function HeroSection() {
-  const stats = [
+  const stats: Stat[] = [
     { 
       icon: Smartphone, 
       number: "500+", 
@@ -52,7 +59,7 @@ export function HeroSection() {
           {/* Description */}
           <p className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
             Comparez gratuitement tous les forfaits mobiles et box internet. 
-            Trouvez l'offre parfaite en quelques clics et économisez jusqu'à 300€ par an.
+            Trouvez l&apos;offre parfaite en quelques clics et économisez jusqu&apos;à 300€ par an.
           </p>
 
           {/* CTA Buttons */}
@@ -78,22 +85,25 @@ export function HeroSection() {
 
           {/* Stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <stat.icon className="w-6 h-6 text-white" />
+            {stats.map((stat, index) => {
+              const IconComponent = stat.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors"
+                >
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <IconComponent className="w-6 h-6 text-white" />
+                  </div>
+                  <div className="text-2xl lg:text-3xl font-bold mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-gray-300 text-sm font-medium">
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-2xl lg:text-3xl font-bold mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-300 text-sm font-medium">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
