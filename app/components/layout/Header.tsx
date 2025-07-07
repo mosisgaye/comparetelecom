@@ -1,13 +1,17 @@
+'use client';
+
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, Smartphone, Wifi, Search } from 'lucide-react';
+import { Menu, X, MessageSquare, Bot, Zap } from 'lucide-react';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navigation = [
-    { name: 'Forfaits Mobile', href: '/forfait-mobile', icon: Smartphone },
-    { name: 'Box Internet', href: '/box-internet', icon: Wifi },
+    { name: 'Fonctionnalités', href: '#features' },
+    { name: 'Tarifs', href: '#pricing' },
+    { name: 'Documentation', href: '#docs' },
+    { name: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -17,10 +21,10 @@ export function Header() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-                <Search className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                <Bot className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">CompareTelecom</span>
+              <span className="text-xl font-bold text-gray-900">AISupport</span>
             </Link>
           </div>
 
@@ -30,9 +34,8 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="flex items-center gap-2 text-gray-700 hover:text-gray-900 font-medium transition-colors"
+                className="text-gray-700 hover:text-gray-900 font-medium transition-colors"
               >
-                <item.icon className="w-4 h-4" />
                 {item.name}
               </Link>
             ))}
@@ -41,10 +44,16 @@ export function Header() {
           {/* CTA desktop */}
           <div className="hidden md:flex items-center gap-4">
             <Link
-              href="/forfait-mobile"
-              className="bg-gray-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+              href="/login"
+              className="text-gray-700 hover:text-gray-900 font-medium"
             >
-              Comparer maintenant
+              Connexion
+            </Link>
+            <Link
+              href="/signup"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+            >
+              Essai gratuit
             </Link>
           </div>
 
@@ -67,20 +76,26 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium"
+                  className="block px-3 py-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <item.icon className="w-5 h-5" />
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-4 border-t border-gray-200">
+              <div className="pt-4 border-t border-gray-200 space-y-2">
                 <Link
-                  href="/forfait-mobile"
-                  className="block w-full bg-gray-900 text-white text-center px-4 py-3 rounded-lg font-medium"
+                  href="/login"
+                  className="block px-3 py-2 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Comparer maintenant
+                  Connexion
+                </Link>
+                <Link
+                  href="/signup"
+                  className="block w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center px-4 py-3 rounded-lg font-medium"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Essai gratuit
                 </Link>
               </div>
             </div>

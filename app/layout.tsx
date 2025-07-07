@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/app/components/layout/Header";
+import { Footer } from "@/app/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,12 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CompareTelecom - Comparateur n°1 des offres mobiles et box internet",
-  description: "Comparez gratuitement tous les forfaits mobiles et box internet. Trouvez la meilleure offre telecom et économisez jusqu'à 300€ par an. Gratuit et fiable.",
-  keywords: "comparateur telecom, forfait mobile, box internet, fibre optique, 5G, comparaison offres",
+  title: "AISupport - Plateforme SaaS de Support Client IA",
+  description: "Transformez votre support client avec l'intelligence artificielle. Chat IA avancé, automatisation intelligente et insights en temps réel.",
+  keywords: "support client IA, chatbot intelligent, SaaS, automatisation, GPT-4, Claude AI",
   openGraph: {
-    title: "CompareTelecom - Comparateur n°1 des offres telecom",
-    description: "Trouvez la meilleure offre mobile ou box internet. Comparaison gratuite et transparente.",
+    title: "AISupport - Support Client Révolutionnaire avec IA",
+    description: "La plateforme SaaS qui révolutionne le support client grâce à l'IA. Essai gratuit disponible.",
     type: "website",
     locale: "fr_FR",
   },
@@ -27,7 +29,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://comparetelecom.fr",
+    canonical: "https://aisupport.fr",
   }
 };
 
@@ -41,7 +43,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Header />
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
